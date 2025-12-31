@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #2b0060, #050014);
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
+}
+
+/* Gift */
+#gift {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -120vh);
+  cursor: pointer;
+  animation: fall 1.6s cubic-bezier(.22,1.2,.36,1) forwards;
+  filter: drop-shadow(0 0 30px rgba(255,215,0,.7));
+}
+
+/* prevent click bugs */
+#gift * {
+  pointer-events: none;
+}
+
+/* box */
+.box {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #ff2f92, #ff005d);
+  border-radius: 20px;
+}
+
+/* lid */
+.lid {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  left: -10px;
+  top: -50px;
+  background: linear-gradient(145deg, #ffd700, #ffb700);
+  border-radius: 20px;
+  transform-origin: center bottom;
+  transition: transform 1.3s cubic-bezier(.22,1,.36,1);
+}
+
+/* ribbons */
+.ribbon {
+  position: absolute;
+  background: gold;
+}
+
+.ribbon.v {
+  width: 18px;
+  height: 200px;
+  left: 81px;
+  top: -10px;
+}
+
+.ribbon.h {
+  width: 200px;
+  height: 18px;
+  left: -10px;
+  top: 81px;
+}
+
+/* hover */
+#gift:hover:not(.open) {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+/* open animation */
+#gift.open .lid {
+  transform: translateY(-700px) rotate(-25deg);
+}
+
+/* message */
+#message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 40px);
+  color: white;
+  font-size: 2.2rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 2s ease, transform 2s ease;
+  z-index: 5;
+}
+
+#message.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* fireworks */
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* fall animation */
+@keyframes fall {
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+#message {
+  text-align: center;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+#message .msg-title {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(255,215,0,0.6);
+}
+
+#message .msg-body {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #f1f1f1;
+  margin-bottom: 12px;
+  text-shadow: 0 0 18px rgba(255,255,255,0.35);
+}
+
+#message .msg-hype {
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffd700;
+  text-shadow: 0 0 24px rgba(255,215,0,0.8);
+}
